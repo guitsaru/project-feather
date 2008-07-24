@@ -1,9 +1,9 @@
 name: Code
 url: http://guitsaru.com/
-version: 1.0.0
-description: Creates an entry and highlights code.
+version: 1
+description: Post code snippets with geshi syntax highlighting.
 author:
-  name: Matt
+  name: Matt Pruitt
   url: http://guitsaru.com/
-confirm: Do you want to delete all the whatnot that My Module created?
+confirm: Do you want to delete all code posts?
 plural: code
