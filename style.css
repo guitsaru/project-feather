@@ -4,4 +4,5 @@ pre#geshi_code {
     line-height: 11pt;
 	border-style: dotted;
 	border-width: 1px;
+	max-height: 300px;
 }
