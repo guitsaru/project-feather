@@ -1,0 +1,7 @@
+pre#geshi_code {
+    padding: 7px 2px;
+    overflow: auto;
+    line-height: 11pt;
+	border-style: dotted;
+	border-width: 1px;
+}
