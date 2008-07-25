@@ -22,7 +22,7 @@
 			if(empty($_POST['description']))
 				error(__("Error"), __("Description can't be blank."));
 			if(empty($_POST['image']))
-				error(__("Error"), __("Description can't be blank."));
+				error(__("Error"), __("Image can't be blank."));
 			
 			fallback($_POST['slug'], sanitize($_POST['title']));
 			
