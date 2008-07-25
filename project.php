@@ -14,15 +14,12 @@
 			$this->setField(
 				array("attr" => "image",
 					  "type" => "file",
-					  "label" => __("Image", "project"),
-					  "optional" => false));
+					  "label" => __("Image", "project")));
 		}
 		
 		public function submit() {
 			if(empty($_POST['description']))
 				error(__("Error"), __("Description can't be blank."));
-			if(empty($_POST['image']))
-				error(__("Error"), __("Image can't be blank."));
 			
 			fallback($_POST['slug'], sanitize($_POST['title']));
 			
@@ -44,8 +41,6 @@
 		
 		public function update() {
 			if(empty($_POST['description']))
-				error(__("Error"), __("Description can't be blank."));
-			if(empty($_POST['image']))
 				error(__("Error"), __("Description can't be blank."));
 				
 			$post = new Post($_POST['id']);
