@@ -6,5 +6,7 @@
 							<a href="$post.url" rel="bookmark" title="${ "Permanent Link to" | translate } &quot;$post.title&quot;">$post.title</a>
 						</h2>
 {% endif %}
-  
+  <a href="$post.project_url">${ feathers['photo'].image_tag_for(post, 434) }</a>
+  <div class="clear"></div>
+  <p>$post.description</p>
 {% endblock %}
