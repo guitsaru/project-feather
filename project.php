@@ -64,6 +64,8 @@
 			    Post::check_url($_POST['slug']));
 		}
 		public function update() {
+			$post = new Post($_POST['id']);
+			
 			if(empty($_POST['description']))
 				error(__("Error"), __("Description can't be blank."));
 			if(empty($_POST['project_url']))
