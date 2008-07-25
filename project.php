@@ -66,7 +66,7 @@
 			$post = new Post($_POST['id']);
 				$post->update(
 					array("title" => $_POST['title'],
-			 			  "description" => $_POST['body'],
+			 			  "description" => $_POST['description'],
 						  "filename" => $filename,
 						  "client" => $_POST['client']));
 		}
