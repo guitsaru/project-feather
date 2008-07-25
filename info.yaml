@@ -1,9 +1,9 @@
-name: Code
+name: Project
 url: http://guitsaru.com/
 version: 1
-description: Post code snippets with geshi syntax highlighting.
+description: Post information about a project including a picture, link, and description.
 author:
   name: Matt Pruitt
   url: http://guitsaru.com/
-confirm: Do you want to delete all code posts?
-plural: code
+confirm: Do you want to delete all project posts?
+plural: projects
