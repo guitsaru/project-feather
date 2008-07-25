@@ -17,6 +17,11 @@
 					  "label" => __("Client", "project"),
 					  "optional" => true));
 			$this->setField(
+				array("attr" => "client_url",
+					  "type" => "text",
+					  "label" => __("Client URL", "project"),
+					  "optional" => true));
+			$this->setField(
 				array("attr" => "description",
 					  "type" => "text_block",
 					  "label" => __("Description", "project"),
@@ -54,7 +59,8 @@
 					  "description" => $_POST['description'],
 					  "filename" => $filename,
 					  "client" => $_POST['client'],
-					  "project_url" => $_POST['project_url']),
+					  "project_url" => $_POST['project_url'],
+					  "client_url" => $_POST['client_url']),
 				$_POST['slug'],
 			    Post::check_url($_POST['slug']));
 		}
@@ -70,7 +76,8 @@
 			 			  "description" => $_POST['description'],
 						  "filename" => $filename,
 						  "client" => $_POST['client'],
-						  "project_url" => $_POST['project_url']));
+						  "project_url" => $_POST['project_url'],
+						  "client_url" => $_POST['client_url']));
 		}
 		public function title($post) {
 			if(!empty($post->client))
