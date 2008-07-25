@@ -1,17 +1,17 @@
 <?php
 	class Project extends Feathers implements Feather {
 		public function __init() {
-			$this->set_field(
+			$this->setField(
 				array("attr" => "title",
 					  "type" => "text",
 					  "label" => __("Title", "project"),
 					  "optional" => true));
-			$this->set_field(
+			$this->setField(
 				array("attr" => "description",
 					  "type" => "text_block",
 					  "label" => __("Description", "project"),
 					  "optional" => false));
-			$this->set_field(
+			$this->setField(
 				array("attr" => "image",
 					  "type" => "file",
 					  "label" => __("Image", "project"),
