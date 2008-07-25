@@ -15,6 +15,10 @@
 				array("attr" => "image",
 					  "type" => "file",
 					  "label" => __("Image", "project")));
+					
+			
+			$this->respondTo("admin_write_post", "swfupload");
+			$this->respondTo("admin_edit_post", "swfupload");
 		}
 		
 		public function submit() {
