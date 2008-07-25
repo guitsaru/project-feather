@@ -70,6 +70,14 @@
 			if(empty($_POST['project_url']))
 				error(__("Error"), __("URL can't be blank."));
 				
+			if (!isset($_POST['filename'])) {
+				if (isset($_FILES['image']) and $_FILES['image']['error'] == 0)
+					$filename = upload($_FILES['image'], array("jpg", "jpeg", "png", "gif", "bmp"));
+				else
+					error(__("Error"), __("Couldn't upload photo."));
+			} else
+				$filename = $_POST['filename'];
+				
 			$post = new Post($_POST['id']);
 				$post->update(
 					array("title" => $_POST['title'],
