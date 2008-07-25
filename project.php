@@ -30,9 +30,7 @@
 			$this->respondTo("admin_edit_post", "swfupload");
 			
 			$this->setFilter("description", "markup_post_text");
-			$this->setFilter("client", "markup_post_text");
 		    $this->setFilter("title", "markup_post_title");
-			$this->setFilter("project_url", "markup_post_text");
 		}
 		public function submit() {
 			if(empty($_POST['description']))
@@ -54,7 +52,8 @@
 				array("title" => $_POST['title'],
 					  "description" => $_POST['description'],
 					  "filename" => $filename,
-					  "client" => $_POST['client']),
+					  "client" => $_POST['client'],
+					  "project_url" => $_POST['project_url']),
 				$_POST['slug'],
 			    Post::check_url($_POST['slug']));
 		}
@@ -69,7 +68,8 @@
 					array("title" => $_POST['title'],
 			 			  "description" => $_POST['description'],
 						  "filename" => $filename,
-						  "client" => $_POST['client']));
+						  "client" => $_POST['client'],
+						  "project_url" => $_POST['project_url']));
 		}
 		public function title($post) {
 			if(!empty($post->client))
