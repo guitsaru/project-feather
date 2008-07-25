@@ -49,12 +49,11 @@
 			} else
 				$filename = $_POST['filename'];
 			
-			echo $filename;
-			
 			return Post::add(
 				array("title" => $_POST['title'],
 					  "description" => $_POST['description'],
-					  "filename" => $filename),
+					  "filename" => $filename,
+					  "client" => $_POST['client']),
 				$_POST['slug'],
 			    Post::check_url($_POST['slug']));
 		}
@@ -68,10 +67,11 @@
 				$post->update(
 					array("title" => $_POST['title'],
 			 			  "description" => $_POST['body'],
-						  "filename" => $filename));
+						  "filename" => $filename,
+						  "client" => $client));
 		}
 		public function title($post) {
-			return fallback($post->title, $post->title_from_excerpt(), true);
+			return fallback($post->title, $post->client, true);
 		}
 		public function excerpt($post) {
 			return $post->description;
