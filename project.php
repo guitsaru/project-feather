@@ -12,6 +12,11 @@
 					  "label" => __("URL", "project"),
 					  "optional" => false));
 			$this->setField(
+				array("attr" => "client",
+					  "type" => "text",
+					  "label" => __("Client", "project"),
+					  "optional" => true));
+			$this->setField(
 				array("attr" => "description",
 					  "type" => "text_block",
 					  "label" => __("Description", "project"),
@@ -23,6 +28,10 @@
 			
 			$this->respondTo("admin_write_post", "swfupload");
 			$this->respondTo("admin_edit_post", "swfupload");
+			
+			$this->setFilter("description", "markup_post_text");
+			$this->setFilter("client", "markup_post_text");
+		    $this->setFilter("title", "markup_post_title");
 		}
 		public function submit() {
 			if(empty($_POST['description']))
