@@ -71,7 +71,10 @@
 						  "client" => $client));
 		}
 		public function title($post) {
-			return fallback($post->title, $post->client, true);
+			if(!empty($post->client))
+				return fallback($post->title, $post->client, true);
+			else
+				return fallback($post->title, $post->title_from_excerpt());
 		}
 		public function excerpt($post) {
 			return $post->description;
