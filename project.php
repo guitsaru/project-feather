@@ -66,5 +66,11 @@
 		public function feed_content($post) {
 			return $post->description;
 		}
+	
+		public function swfupload($post = null) {
+			if (isset($post) and $post->feather != "project" or
+			    isset($_GET['feather']) and $_GET['feather'] != "project") return;
+			Trigger::current()->call("prepare_swfupload", "image", "*.jpg;*.jpeg;*.png;*.gif;*.bmp");
+		}
 	}
 ?>
