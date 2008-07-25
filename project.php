@@ -79,7 +79,6 @@
 					$this->delete_file($post);
 					$filename = upload($_FILES['image'], array("jpg", "jpeg", "png", "gif", "tiff", "bmp"));
 				} else {
-					error(__("Error"), __("Image not uploaded."));
 					$filename = $post->filename;
 				}
 			} else {
