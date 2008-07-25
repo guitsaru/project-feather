@@ -71,12 +71,9 @@
 				error(__("Error"), __("URL can't be blank."));
 				
 			if (!isset($_POST['filename']))
-				if (isset($_FILES['photo']) and $_FILES['photo']['error'] == 0) {
+				if (isset($_FILES['image']) and $_FILES['image']['error'] == 0) {
 					$this->delete_file($post);
-					$filename = upload($_FILES['photo'], array("jpg", "jpeg", "png", "gif", "tiff", "bmp"));
-				} elseif (!empty($_POST['from_url'])) {
-					$this->delete_file($post);
-					$filename = upload_from_url($_POST['from_url'], array("jpg", "jpeg", "png", "gif", "tiff", "bmp"));
+					$filename = upload($_FILES['image'], array("jpg", "jpeg", "png", "gif", "tiff", "bmp"));
 				} else
 					$filename = $post->filename;
 			else {
