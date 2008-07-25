@@ -36,7 +36,6 @@
 			
 			$this->setFilter("description", "markup_post_text");
 		    $this->setFilter("title", "markup_post_title");
-			// $this->setFilter("client", "markup_post_text");
 		}
 		public function submit() {
 			if(empty($_POST['description']))
@@ -69,6 +68,17 @@
 				error(__("Error"), __("Description can't be blank."));
 			if(empty($_POST['project_url']))
 				error(__("Error"), __("URL can't be blank."));
+			
+			if(!isset($_POST['filename'])) {
+				if (isset($_FILES['photo']) and $_FILES['photo']['error'] == 0) {
+					$this->delete_file($post);
+					$filename = upload($_FILES['image'], array("jpg", "jpeg", "png", "gif", "tiff", "bmp"));
+				} else {
+					$filename = $_POST['filename'];
+				}
+			} else {
+				$filename = $_POST['filename'];
+			}
 				
 			$post = new Post($_POST['id']);
 				$post->update(
