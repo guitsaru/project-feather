@@ -36,7 +36,7 @@
 			
 			$this->setFilter("description", "markup_post_text");
 		    $this->setFilter("title", "markup_post_title");
-			$this->setFilter("client", "markup_post_text");
+			// $this->setFilter("client", "markup_post_text");
 		}
 		public function submit() {
 			if(empty($_POST['description']))
