@@ -7,6 +7,11 @@
 					  "label" => __("Title", "project"),
 					  "optional" => true));
 			$this->setField(
+				array("attr" => "project_url",
+					  "type" => "text",
+					  "label" => __("URL", "project"),
+					  "optional" => false));
+			$this->setField(
 				array("attr" => "description",
 					  "type" => "text_block",
 					  "label" => __("Description", "project"),
@@ -15,11 +20,6 @@
 				array("attr" => "image",
 					  "type" => "file",
 					  "label" => __("Image", "project")));
-			$this->setField(
-				array("attr" => "project_url",
-					  "type" => "text",
-					  "label" => __("URL", "project"),
-					  "optional" => false));
 			
 			$this->respondTo("admin_write_post", "swfupload");
 			$this->respondTo("admin_edit_post", "swfupload");
