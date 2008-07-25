@@ -68,7 +68,7 @@
 					array("title" => $_POST['title'],
 			 			  "description" => $_POST['body'],
 						  "filename" => $filename,
-						  "client" => $client));
+						  "client" => $_POST['client']));
 		}
 		public function title($post) {
 			if(!empty($post->client))
