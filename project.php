@@ -77,7 +77,7 @@
 					$filename = $post->filename;
 				}
 			} else {
-				this->delete_file($post);
+				$this->delete_file($post);
 				$filename = $_POST['filename'];
 			}
 				
