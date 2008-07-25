@@ -74,9 +74,10 @@
 					$this->delete_file($post);
 					$filename = upload($_FILES['image'], array("jpg", "jpeg", "png", "gif", "tiff", "bmp"));
 				} else {
-					$filename = $_POST['filename'];
+					$filename = $post->filename;
 				}
 			} else {
+				this->delete_file($post);
 				$filename = $_POST['filename'];
 			}
 				
