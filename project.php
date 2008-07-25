@@ -15,15 +15,20 @@
 				array("attr" => "image",
 					  "type" => "file",
 					  "label" => __("Image", "project")));
-					
+			$this->setField(
+				array("attr" => "project_url",
+					  "type" => "text",
+					  "label" => __("URL", "project"),
+					  "optional" => false));
 			
 			$this->respondTo("admin_write_post", "swfupload");
 			$this->respondTo("admin_edit_post", "swfupload");
 		}
-		
 		public function submit() {
 			if(empty($_POST['description']))
 				error(__("Error"), __("Description can't be blank."));
+			if(empty($_POST['project_url']))
+				error(__("Error"), __("URL can't be blank."));
 			
 			fallback($_POST['slug'], sanitize($_POST['title']));
 			
@@ -35,6 +40,8 @@
 			} else
 				$filename = $_POST['filename'];
 			
+			echo $filename;
+			
 			return Post::add(
 				array("title" => $_POST['title'],
 					  "description" => $_POST['description'],
@@ -42,10 +49,11 @@
 				$_POST['slug'],
 			    Post::check_url($_POST['slug']));
 		}
-		
 		public function update() {
 			if(empty($_POST['description']))
 				error(__("Error"), __("Description can't be blank."));
+			if(empty($_POST['project_url']))
+				error(__("Error"), __("URL can't be blank."));
 				
 			$post = new Post($_POST['id']);
 				$post->update(
@@ -53,19 +61,15 @@
 			 			  "description" => $_POST['body'],
 						  "filename" => $filename));
 		}
-		
 		public function title($post) {
 			return fallback($post->title, $post->title_from_excerpt(), true);
 		}
-		
 		public function excerpt($post) {
 			return $post->description;
 		}
-		
 		public function feed_content($post) {
 			return $post->description;
 		}
-	
 		public function swfupload($post = null) {
 			if (isset($post) and $post->feather != "project" or
 			    isset($_GET['feather']) and $_GET['feather'] != "project") return;
