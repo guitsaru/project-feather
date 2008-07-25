@@ -6,9 +6,13 @@
 							<a href="$post.url" rel="bookmark" title="${ "Permanent Link to" | translate } &quot;$post.title&quot;">$post.title</a>
 						</h2>
 {% endif %}
-  ${ feathers['project'].image_tag_for(post, 434) }
-  <a href="$post.project_url">$post.project_url</a>
-  <div class="clear"></div>
-  $post.client
-  $post.description
+  ${ feathers['project'].image_tag_for(post, 200) }
+  <div class="description">
+	  <h5><em>Website</em> - <a href="$post.project_url">$post.project_url</a></h5>
+	  {% if post['client'] %}
+		<h5><em>Client</em> - <a href="$post.client_url">$post.client</a></h5>
+		{% endif %}
+	  <div class="clear"></div>
+	  $post.description
+  </div>
 {% endblock %}

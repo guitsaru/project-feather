@@ -36,6 +36,9 @@
 			
 			$this->setFilter("description", "markup_post_text");
 		    $this->setFilter("title", "markup_post_title");
+			$this->respondTo("delete_post", "delete_file");
+			$this->respondTo("admin_write_post", "swfupload");
+			$this->respondTo("admin_edit_post", "swfupload");
 		}
 		public function submit() {
 			if(empty($_POST['description']))
@@ -76,6 +79,7 @@
 					$this->delete_file($post);
 					$filename = upload($_FILES['image'], array("jpg", "jpeg", "png", "gif", "tiff", "bmp"));
 				} else {
+					error(__("Error"), __("Image not uploaded."));
 					$filename = $post->filename;
 				}
 			} else {
@@ -113,6 +117,10 @@
 			$filename = $post->filename;
 			$config = Config::current();
 			return '<a href="'.$config->chyrp_url.$config->uploads_path.$filename.'"><img src="'.$config->chyrp_url.'/includes/thumb.php?file=..'.$config->uploads_path.urlencode($filename).'&amp;max_width='.$max_width.'&amp;max_height='.$max_height.'&amp;'.$more_args.'" alt="'.fallback($post->alt_text, $filename, true).'" /></a>';
+		}
+		public function delete_file($post) {
+			if ($post->feather != "project") return;
+			unlink(MAIN_DIR.Config::current()->uploads_path.$post->filename);
 		}
 	}
 ?>
