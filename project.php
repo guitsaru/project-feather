@@ -75,5 +75,10 @@
 			    isset($_GET['feather']) and $_GET['feather'] != "project") return;
 			Trigger::current()->call("prepare_swfupload", "image", "*.jpg;*.jpeg;*.png;*.gif;*.bmp");
 		}
+		public function image_tag_for($post, $max_width = 500, $max_height = null, $more_args = "quality=100") {
+			$filename = $post->filename;
+			$config = Config::current();
+			return '<a href="'.$config->chyrp_url.$config->uploads_path.$filename.'"><img src="'.$config->chyrp_url.'/includes/thumb.php?file=..'.$config->uploads_path.urlencode($filename).'&amp;max_width='.$max_width.'&amp;max_height='.$max_height.'&amp;'.$more_args.'" alt="'.fallback($post->alt_text, $filename, true).'" /></a>';
+		}
 	}
 ?>
