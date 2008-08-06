@@ -66,7 +66,7 @@
 				$_POST['slug'],
 			    Post::check_url($_POST['slug']));
 		}
-		public function update() {
+		public function update($post) {
 			$post = new Post($_POST['id']);
 			
 			if(empty($_POST['description']))
@@ -86,14 +86,13 @@
 				$filename = $_POST['filename'];
 			}
 				
-			$post = new Post($_POST['id']);
-				$post->update(
-					array("title" => $_POST['title'],
-			 			  "description" => $_POST['description'],
-						  "filename" => $filename,
-						  "client" => $_POST['client'],
-						  "project_url" => $_POST['project_url'],
-						  "client_url" => $_POST['client_url']));
+			$post->update(
+				array("title" => $_POST['title'],
+	 			  "description" => $_POST['description'],
+				  "filename" => $filename,
+				  "client" => $_POST['client'],
+				  "project_url" => $_POST['project_url'],
+				  "client_url" => $_POST['client_url']));
 		}
 		public function title($post) {
 			if(!empty($post->client))
@@ -107,7 +106,7 @@
 		public function feed_content($post) {
 			return $post->description;
 		}
-		public function swfupload($post = null) {
+		public function swfupload($admin, $post = null) {
 			if (isset($post) and $post->feather != "project" or
 			    isset($_GET['feather']) and $_GET['feather'] != "project") return;
 			Trigger::current()->call("prepare_swfupload", "image", "*.jpg;*.jpeg;*.png;*.gif;*.bmp");
