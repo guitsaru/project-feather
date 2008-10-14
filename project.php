@@ -66,7 +66,7 @@
 				$_POST['slug'],
 			    Post::check_url($_POST['slug']));
 		}
-		public function update($post) {
+		public function update() {
 			$post = new Post($_POST['id']);
 			
 			if(empty($_POST['description']))
